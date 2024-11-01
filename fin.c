@@ -27,3 +27,16 @@ void ajouterTache() {
         printf("La liste des tâches est pleine.\n");
         return;
     }
+
+    printf("Titre : ");
+    scanf(" %[^\n]", taches[nombreTaches].titre);
+    printf("Description : ");
+    scanf(" %[^\n]", taches[nombreTaches].description);
+    printf("Date d'échéance (YYYY-MM-DD) : ");
+    scanf(" %[^\n]", taches[nombreTaches].dateEcheance);
+    printf("Priorité (High/Low) : ");
+    scanf(" %[^\n]", taches[nombreTaches].priorite);
+
+    nombreTaches++;
+    printf("Tâche ajoutée avec succès.\n");
+}
