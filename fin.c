@@ -99,3 +99,21 @@ void supprimerTache() {
     nombreTaches--;
     printf("Tâche supprimée avec succès.\n");
 }
+void filtrerTaches() {
+    char priorite[10];
+    printf("Entrez la priorité à filtrer (High/Low) : ");
+    scanf(" %[^\n]", priorite);
+
+    printf("Tâches avec priorité %s :\n", priorite);
+    int trouve = 0;
+    for (int i = 0; i < nombreTaches; i++) {
+        if (strcmp(taches[i].priorite, priorite) == 0) {
+            printf("Tâche %d : %s\n", i + 1, taches[i].titre);
+            trouve = 1;
+        }
+    }
+
+    if (!trouve) {
+        printf("Aucune tâche trouvée avec cette priorité.\n");
+    }
+}
