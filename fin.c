@@ -22,3 +22,8 @@ void afficherMenu() {
     printf("6. Quitter\n");
     printf("Choisissez une option : ");
 }
+void ajouterTache() {
+    if (nombreTaches >= MAX_TACHES) {
+        printf("La liste des tâches est pleine.\n");
+        return;
+    }
