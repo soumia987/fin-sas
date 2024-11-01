@@ -40,3 +40,44 @@ void ajouterTache() {
     nombreTaches++;
     printf("Tâche ajoutée avec succès.\n");
 }
+void modifierTache() {
+    int index;
+    printf("Entrez le numéro de la tâche à modifier : ");
+    scanf("%d", &index);
+    index--; // Ajuste pour l'indexation à partir de 0
+
+    if (index < 0 || index >= nombreTaches) {
+        printf("Tâche non trouvée.\n");
+        return;
+    }
+
+    printf("Nouveau titre (laisser vide pour conserver) : ");
+    char nouveauTitre[50];
+    scanf(" %[^\n]", nouveauTitre);
+    if (strlen(nouveauTitre) > 0) {
+        strcpy(taches[index].titre, nouveauTitre);
+    }
+
+    printf("Nouvelle description (laisser vide pour conserver) : ");
+    char nouvelleDescription[100];
+    scanf(" %[^\n]", nouvelleDescription);
+    if (strlen(nouvelleDescription) > 0) {
+        strcpy(taches[index].description, nouvelleDescription);
+    }
+
+    printf("Nouvelle date d'échéance (laisser vide pour conserver) : ");
+    char nouvelleDate[11];
+    scanf(" %[^\n]", nouvelleDate);
+    if (strlen(nouvelleDate) > 0) {
+        strcpy(taches[index].dateEcheance, nouvelleDate);
+    }
+
+    printf("Nouvelle priorité (laisser vide pour conserver) : ");
+    char nouvellePriorite[10];
+    scanf(" %[^\n]", nouvellePriorite);
+    if (strlen(nouvellePriorite) > 0) {
+        strcpy(taches[index].priorite, nouvellePriorite);
+    }
+
+    printf("Tâche modifiée avec succès.\n");
+}
