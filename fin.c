@@ -81,3 +81,21 @@ void modifierTache() {
 
     printf("Tâche modifiée avec succès.\n");
 }
+void supprimerTache() {
+    int index;
+    printf("Entrez le numéro de la tâche à supprimer : ");
+    scanf("%d", &index);
+    index--; // Ajuste pour l'indexation à partir de 0
+
+    if (index < 0 || index >= nombreTaches) {
+        printf("Tâche non trouvée.\n");
+        return;
+    }
+
+    for (int i = index; i < nombreTaches - 1; i++) {
+        taches[i] = taches[i + 1]; // Déplace les tâches vers la gauche
+    }
+
+    nombreTaches--;
+    printf("Tâche supprimée avec succès.\n");
+}
