@@ -117,3 +117,24 @@ void filtrerTaches() {
         printf("Aucune tâche trouvée avec cette priorité.\n");
     }
 }
+int main() {
+    int choix;
+
+    do {
+        afficherMenu();
+        scanf("%d", &choix);
+
+        switch (choix) {
+            case 1: ajouterTache(); break;
+            case 2: afficherTaches(); break;
+            case 3: modifierTache(); break;
+            case 4: supprimerTache(); break;
+            case 5: filtrerTaches(); break;
+            case 6: printf("Au revoir !\n"); break;
+            default: printf("Choix invalide. Veuillez réessayer.\n");
+        }
+
+    } while (choix != 6);
+
+    return 0;
+}
