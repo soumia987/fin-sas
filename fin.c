@@ -11,4 +11,14 @@ typedef struct {
 } Tache;
 
 Tache taches[MAX_TACHES];
-int nombreTaches = 0;
+int nombreTaches = 0; 
+void afficherMenu() {
+    printf("=== Menu ===\n");
+    printf("1. Ajouter une tâche\n");
+    printf("2. Afficher la liste des tâches\n");
+    printf("3. Modifier une tâche\n");
+    printf("4. Supprimer une tâche\n");
+    printf("5. Filtrer les tâches\n");
+    printf("6. Quitter\n");
+    printf("Choisissez une option : ");
+}
