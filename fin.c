@@ -6,28 +6,19 @@
 typedef struct {
     char titre[50];
     char description[100];
-    char dateEcheance[11]; // format YYYY-MM-DD
+    char dateEcheance[11]; // format annee-mois-jour
     char priorite[10]; // "High" ou "Low"
 } Tache;
 
 Tache taches[MAX_TACHES];
-int nombreTaches = 0; 
-void afficherMenu() {
-    printf("=== Menu ===\n");
-    printf("1. Ajouter une tâche\n");
-    printf("2. Afficher la liste des tâches\n");
-    printf("3. Modifier une tâche\n");
-    printf("4. Supprimer une tâche\n");
-    printf("5. Filtrer les tâches\n");
-    printf("6. Quitter\n");
-    printf("Choisissez une option : ");
-}
+int nombreTaches = 0;
+
 void ajouterTache() {
     if (nombreTaches >= MAX_TACHES) {
         printf("La liste des tâches est pleine.\n");
         return;
     }
-
+    
     printf("Titre : ");
     scanf(" %[^\n]", taches[nombreTaches].titre);
     printf("Description : ");
@@ -36,10 +27,32 @@ void ajouterTache() {
     scanf(" %[^\n]", taches[nombreTaches].dateEcheance);
     printf("Priorité (High/Low) : ");
     scanf(" %[^\n]", taches[nombreTaches].priorite);
+        if(taches[nombreTaches].priorite!=0||taches[nombreTaches].priorite!=1)
+        {
+            printf("veuillez entrer seulement 0 ou 1");
+            return;
+        }
 
     nombreTaches++;
     printf("Tâche ajoutée avec succès.\n");
 }
+
+void afficherTaches() {
+    if (nombreTaches == 0) {
+        printf("Aucune tâche à afficher.\n");
+        return;
+    }
+    
+    for (int i = 0; i < nombreTaches; i++) {
+        printf("Tâche %d :\n", i + 1);
+        printf("  Titre : %s\n", taches[i].titre);
+        printf("  Description : %s\n", taches[i].description);
+        printf("  Date d'échéance : %s\n", taches[i].dateEcheance);
+        printf("  Priorité : %s\n", taches[i].priorite);
+        printf("----------------------------------------\n");
+    }
+}
+
 void modifierTache() {
     int index;
     printf("Entrez le numéro de la tâche à modifier : ");
@@ -57,7 +70,7 @@ void modifierTache() {
     if (strlen(nouveauTitre) > 0) {
         strcpy(taches[index].titre, nouveauTitre);
     }
-
+    
     printf("Nouvelle description (laisser vide pour conserver) : ");
     char nouvelleDescription[100];
     scanf(" %[^\n]", nouvelleDescription);
@@ -81,6 +94,7 @@ void modifierTache() {
 
     printf("Tâche modifiée avec succès.\n");
 }
+
 void supprimerTache() {
     int index;
     printf("Entrez le numéro de la tâche à supprimer : ");
@@ -99,11 +113,12 @@ void supprimerTache() {
     nombreTaches--;
     printf("Tâche supprimée avec succès.\n");
 }
+
 void filtrerTaches() {
     char priorite[10];
     printf("Entrez la priorité à filtrer (High/Low) : ");
     scanf(" %[^\n]", priorite);
-
+    
     printf("Tâches avec priorité %s :\n", priorite);
     int trouve = 0;
     for (int i = 0; i < nombreTaches; i++) {
@@ -117,6 +132,18 @@ void filtrerTaches() {
         printf("Aucune tâche trouvée avec cette priorité.\n");
     }
 }
+
+void afficherMenu() {
+    printf("=== Menu ===\n");
+    printf("1. Ajouter une tâche\n");
+    printf("2. Afficher la liste des tâches\n");
+    printf("3. Modifier une tâche\n");
+    printf("4. Supprimer une tâche\n");
+    printf("5. Filtrer les tâches\n");
+    printf("6. Quitter\n");
+    printf("Choisissez une option : ");
+}
+
 int main() {
     int choix;
 
